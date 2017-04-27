@@ -37,6 +37,8 @@ $ npm install -g npm2yarn
 
 ## Usage
 
+Make sure you've [installed Yarn](https://yarnpkg.com/en/docs/install).
+
 (in the directory of the project to convert, which must be a Git repository)
 ```
 $ npm2yarn
