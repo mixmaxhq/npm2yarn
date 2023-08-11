@@ -7,24 +7,6 @@ const spawnSync = require('child_process').spawnSync;
 module.exports = () => {
   console.log(chalk.magenta('\nnpm2yarn.js...\n'));
 
-  // Git setup.
-  console.log(chalk.blue('\nGit setup...'));
-  console.log(chalk.blue('Checking out master'));
-  spawnSync('git', ['checkout', 'master'], {
-    // Write to this process's stdout.
-    stdio: 'inherit'
-  });
-
-  console.log(chalk.blue('Pulling the latest changes'));
-  spawnSync('git', ['pull'], {
-    stdio: 'inherit'
-  });
-
-  console.log(chalk.blue('Checking out `yarnify`'));
-  spawnSync('git', ['checkout', '-B', 'yarnify'], {
-    stdio: 'inherit'
-  });
-
   // Remove shrinkwrapping.
   const shrinkwrapPath = `${process.cwd()}/npm-shrinkwrap.json`;
   if (fs.existsSync(shrinkwrapPath)) {
@@ -80,15 +62,6 @@ module.exports = () => {
   // Run tests.
   console.log(chalk.blue('\nRunning `yarn test`.'));
   spawnSync('yarn', ['test'], {
-    stdio: 'inherit'
-  });
-
-  // Stage changes.
-  console.log(chalk.blue('\nStaging changes.'));
-  spawnSync('git', ['add', '.'], {
-    stdio: 'inherit'
-  });
-  spawnSync('git', ['status'], {
     stdio: 'inherit'
   });
 
